@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketHub - Painel Administrativo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" th:href="@{/}">
+                <img src="https://img.icons8.com/?size=40&id=2xIX3PtQG26u&format=png&color=6f42c1" alt="Logo" class="me-2">
+                TicketHub
+            </a>
+
+            <div class="d-flex gap-2">
+                <a th:href="@{/}" class="btn btn-outline-secondary">Ver eventos</a>
+                <a th:href="@{/logout}" class="btn btn-danger">Sair</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+
+        <h2 class="fw-bold mb-4">Painel Administrativo</h2>
+
+        <div class="card p-4 shadow-sm mb-4">
+
+            <h4 th:if="${evento.id == null}">Adicionar Evento</h4>
+            <h4 th:if="${evento.id != null}">Editar Evento</h4>
+
+            <form th:action="@{/admin/eventos/salvar}" method="post">
+
+                <input type="hidden" name="id" th:value="${evento.id}">
+
+                <input name="titulo" class="form-control mb-2" placeholder="Título"
+                       th:value="${evento.titulo}" required>
+
+                <textarea name="descricao" class="form-control mb-2" placeholder="Descrição"
+                          th:text="${evento.descricao}" required></textarea>
+
+                <input th:if="${evento.data != null}" type="datetime-local" name="data" class="form-control mb-2"
+                       th:value="${#temporals.format(evento.data, 'yyyy-MM-dd''T''HH:mm')}" required>
+                <input th:if="${evento.data == null}" type="datetime-local" name="data" class="form-control mb-2" required>
+
+                <input name="local" class="form-control mb-2" placeholder="Local"
+                       th:value="${evento.local}" required>
+
+                <input type="number" step="0.01" name="preco" class="form-control mb-2" placeholder="Preço"
+                       th:value="${evento.preco}" required>
+
+                <input type="number" name="capacidade" class="form-control mb-2" placeholder="Capacidade"
+                       th:value="${evento.capacidade}" required>
+
+                <input type="number" name="ingressosDisponiveis" class="form-control mb-2" placeholder="Ingressos disponíveis"
+                       th:value="${evento.ingressosDisponiveis}" required>
+
+                <input name="imagem" class="form-control mb-3" placeholder="URL da imagem"
+                       th:value="${evento.imagem}">
+
+                <button id="btnAdicionarEvento" type="submit" class="btn btn-roxo">
+                    <span th:if="${evento.id == null}">Adicionar Evento</span>
+                    <span th:if="${evento.id != null}">Salvar alterações</span>
+                </button>
+
+                <a th:if="${evento.id != null}" th:href="@{/admin/eventos}" class="btn btn-outline-secondary ms-2">Cancelar</a>
+
+            </form>
+
+        </div>
+
+        <div class="alert alert-warning" th:if="${#lists.isEmpty(eventos)}">
+            Nenhum evento cadastrado.
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-4" th:each="evento : ${eventos}">
+                <div class="card shadow-sm h-100">
+                    <img th:src="${evento.imagem}" class="card-img-top" style="height:200px;object-fit:cover;" alt="Imagem do evento">
+                    <div class="card-body">
+                        <h5 th:text="${evento.titulo}"></h5>
+                        <p th:text="${#temporals.format(evento.data, 'dd/MM/yyyy HH:mm')}"></p>
+                        <p th:text="${evento.local}"></p>
+                        <p><strong>R$ <span th:text="${evento.preco}"></span></strong></p>
+                        <p class="text-muted small">
+                            <span th:text="${evento.ingressosDisponiveis}"></span> / <span th:text="${evento.capacidade}"></span> ingressos disponíveis
+                        </p>
+
+                        <a th:href="@{/admin/eventos/{id}/editar(id=${evento.id})}" class="btn btn-warning btn-sm">Editar</a>
+
+                        <form th:action="@{/admin/eventos/{id}/excluir(id=${evento.id})}" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

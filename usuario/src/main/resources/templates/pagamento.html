@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TicketHub - Comprar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" th:href="@{/}" style="color:#6f42c1;">← Voltar</a>
+        </div>
+    </nav>
+
+    <form th:action="@{/pedidos}" method="post">
+
+        <!-- Campos ocultos enviados ao servidor -->
+        <input type="hidden" name="eventoId" th:value="${evento.id}">
+        <input type="hidden" id="quantidadeInput" name="quantidade" value="1">
+        <input type="hidden" id="formaPagamentoInput" name="formaPagamento" value="">
+
+        <div class="container py-5">
+            <div class="row g-4">
+
+                <!-- Coluna do Resumo -->
+                <div class="col-lg-8">
+                    <div class="card shadow-sm p-4">
+                        <h3 class="fw-bold mb-4">Resumo do Pedido</h3>
+
+                        <div class="alert alert-danger" th:if="${erro}" th:text="${erro}"></div>
+
+                        <div class="d-flex align-items-center">
+                            <img th:src="${evento.imagem}" class="rounded" width="140" height="105" style="object-fit:cover;" alt="Imagem do evento">
+                            <div class="ms-3">
+                                <h5 class="fw-semibold" th:text="${evento.titulo}"></h5>
+                                <p class="mb-1 text-muted" th:text="${#temporals.format(evento.data, 'dd/MM/yyyy HH:mm')}"></p>
+                                <p class="mb-0 text-muted" th:text="${evento.local}"></p>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Dados do comprador -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Nome</label>
+                            <input type="text" name="nomeComprador" class="form-control" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">E-mail</label>
+                            <input type="email" name="emailComprador" class="form-control" placeholder="seu@email.com" required>
+                        </div>
+
+                        <hr>
+
+                        <!-- Quantidade -->
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-semibold mb-0">Quantidade</h5>
+                            <div class="d-flex align-items-center gap-2">
+                                <button type="button" id="btnMenos" class="btn btn-outline-secondary">-</button>
+                                <span id="quantidade" class="fs-5 fw-bold">1</span>
+                                <button type="button" id="btnMais" class="btn btn-outline-secondary">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Forma de Pagamento -->
+                        <div class="card shadow-sm p-4 mt-4">
+                            <h4 class="fw-bold mb-3">Forma de Pagamento</h4>
+
+                            <div class="payment-option d-flex align-items-center p-3 mb-3 rounded" data-method="PIX">
+                                <img src="https://img.icons8.com/color/48/pix.png" alt="PIX" width="48" class="me-3">
+                                <div>
+                                    <h5 class="fw-semibold mb-1">PIX</h5>
+                                    <p class="text-muted mb-0">Pagamento instantâneo via QR Code.</p>
+                                </div>
+                            </div>
+
+                            <div class="payment-option d-flex align-items-center p-3 mb-3 rounded" data-method="CARTAO_CREDITO">
+                                <img src="https://img.icons8.com/?size=100&id=22185&format=png&color=000000" alt="Cartão de Crédito" width="48" class="me-3">
+                                <div>
+                                    <h5 class="fw-semibold mb-1">Cartão de Crédito</h5>
+                                    <p class="text-muted mb-0">Visa, MasterCard ou Elo.</p>
+                                </div>
+                            </div>
+
+                            <div class="payment-option d-flex align-items-center p-3 mb-3 rounded" data-method="CARTAO_DEBITO">
+                                <img src="https://img.icons8.com/?size=100&id=22185&format=png&color=000000" alt="Cartão de Débito" width="48" class="me-3">
+                                <div>
+                                    <h5 class="fw-semibold mb-1">Cartão de Débito</h5>
+                                    <p class="text-muted mb-0">Débito à vista.</p>
+                                </div>
+                            </div>
+
+                            <div class="payment-option d-flex align-items-center p-3 rounded" data-method="BOLETO">
+                                <img src="https://img.icons8.com/?size=100&id=Jz1fIlRqHT5O&format=png&color=000000" alt="Boleto" width="48" class="me-3">
+                                <div>
+                                    <h5 class="fw-semibold mb-1">Boleto</h5>
+                                    <p class="text-muted mb-0">Vencimento em 3 dias úteis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna do Total -->
+                <div class="col-lg-4">
+                    <div class="card shadow-sm p-4 total-card">
+                        <h2 class="fw-bold" style="color:#6f42c1;">Total</h2>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Ingresso</span>
+                            <span id="valorIngresso">R$ <span th:text="${evento.preco}"></span></span>
+                        </div>
+                        <hr>
+                        <h3 class="fw-bold mb-4" id="valorTotal" style="color:#6f42c1;">
+                            R$ <span th:text="${evento.preco}"></span>
+                        </h3>
+                        <button type="submit" id="finalizarCompra" class="btn btn-roxo w-100 py-2 fs-5 fw-semibold" disabled>
+                            FINALIZAR COMPRA
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <!-- Passa o preço do evento para o JS calcular o total dinamicamente -->
+    <script th:inline="javascript">
+        const precoPorIngresso = [[${evento.preco}]];
+    </script>
+    <script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

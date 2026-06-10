@@ -1,0 +1,109 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Cartões */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.125);
+}
+
+/* Botões de quantidade (+ e -) */
+.btn-quantidade {
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-weight: bold;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px; /* garante espaço fixo */
+  text-align:center;
+}
+
+/* Botões principais (Buscar, Meus Ingressos, Finalizar Compra) */
+.btn-primary,
+/* Botões roxos */
+.btn-roxo {
+  background: #6f42c1;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+  padding: 0.40rem;   /* mesma altura */
+  border-radius: 8px;
+  text-align: center;
+}
+.btn-roxo:hover {
+  background: #5a32a3;
+}
+
+
+/* Botão desabilitado */
+#finalizarCompra:disabled {
+  background-color: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed;
+  border: none;
+}
+
+/* Opções de pagamento */
+.payment-option {
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.payment-option:hover {
+  border-color: #6f42c1;
+  background-color: #f9f6ff;
+}
+
+.payment-option.active {
+  border-color: #6f42c1;
+  background-color: #6f42c1;
+  color: #ffffff;
+}
+
+/* Balão de mensagem (toast) */
+.toast-message {
+  position: fixed;
+  top: 20px;          /* agora aparece no topo */
+  right: 20px;        /* alinhada à direita */
+  background: #6f42c1;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(-20px); /* animação de entrada de cima */
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+
+.toast-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ticket-card {
+    transition: 0.3s;
+}
+
+.ticket-card:hover {
+    transform: translateY(-3px);
+}
+
+.badge.bg-success {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+}
+
+.card img {
+    border-radius: 0;
+}

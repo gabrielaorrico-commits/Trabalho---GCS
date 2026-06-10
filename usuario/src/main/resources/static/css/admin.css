@@ -1,0 +1,109 @@
+
+/* Navbar */
+.navbar {
+    background: #ffffff !important;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: rgb(0, 0, 0) !important;
+}
+
+.card h4,
+.card h5 {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 10px;
+}
+
+.form-control:focus {
+    border-color: #6f42c1;
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
+/* Botão Adicionar */
+#btnAdicionarEvento {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+#btnAdicionarEvento:hover {
+    background-color: #5a32a3;
+    border-color: #5a32a3;
+}
+
+/* Botão Sair */
+#btnSairAdmin {
+    border-radius: 10px;
+}
+
+/* Cards dos eventos */
+.event-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+.event-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Conteúdo */
+.event-content {
+    padding: 15px;
+}
+
+.event-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+}
+
+.event-info {
+    color: #666;
+    font-size: 14px;
+}
+
+.event-price {
+    color: #6f42c1;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Botões dos cards */
+.btn-warning {
+    border-radius: 8px;
+}
+
+.btn-danger {
+    border-radius: 8px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+
+    .event-card img {
+        height: 150px;
+    }
+
+    #btnAdicionarEvento {
+        width: 100%;
+    }
+}
