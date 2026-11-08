@@ -37,6 +37,11 @@ Este documento apresenta cenários de testes manuais para verificar funcionalida
 - Buscar um evento existente pelo título e depois pelo local.
 - Buscar um termo que não corresponda a nenhum evento.
 - Resultado esperado: a busca retorna os eventos correspondentes e, quando não houver resultado, exibe a mensagem "Nenhum evento encontrado".
+### Teste 7 - Eventos encerrados
+- Acessar a tela inicial e verificar que eventos com data anterior à atual não são exibidos.
+- Buscar pelo nome de um evento encerrado.
+- Tentar acessar diretamente a URL de pagamento de um evento encerrado e finalizar a compra.
+- Resultado esperado: o evento não aparece na listagem nem na busca, e a compra é recusada com a mensagem "Este evento já aconteceu e não está mais à venda."
 
 ## 3. Registro dos resultados
 
