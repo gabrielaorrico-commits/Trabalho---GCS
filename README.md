@@ -1,6 +1,6 @@
 # TicketHub
 
-Sistema web de compra de ingressos para eventos, desenvolvido com Spring Boot e Thymeleaf.
+O TicketHub é um sistema web para compra e gerenciamento de ingressos de eventos, desenvolvido com Spring Boot e Thymeleaf.
 
 ---
 
