@@ -27,6 +27,10 @@ public class PedidoService {
             throw new RuntimeException("Evento não encontrado");
         }
 
+        if (evento.getData().isBefore(LocalDateTime.now())) {
+            throw new RuntimeException("Este evento já aconteceu e não está mais à venda.");
+        }
+
         if (evento.getIngressosDisponiveis() < quantidade) {
             throw new RuntimeException("Ingressos insuficientes. Disponíveis: " + evento.getIngressosDisponiveis());
         }
