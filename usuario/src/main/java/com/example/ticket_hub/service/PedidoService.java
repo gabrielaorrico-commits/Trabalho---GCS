@@ -3,6 +3,7 @@ package com.example.ticket_hub.service;
 import com.example.ticket_hub.enums.FormaPagamento;
 import com.example.ticket_hub.model.Evento;
 import com.example.ticket_hub.model.Pedido;
+import com.example.ticket_hub.model.Usuario;
 import com.example.ticket_hub.repository.EventoRepository;
 import com.example.ticket_hub.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class PedidoService {
     @Autowired
     private EventoRepository eventoRepository;
 
-    public Pedido criar(Long eventoId, String nomeComprador, String emailComprador,
+    public Pedido criar(Usuario usuario, Long eventoId, String nomeComprador, String emailComprador,
                         int quantidade, FormaPagamento formaPagamento) {
 
         Evento evento = eventoRepository.findById(eventoId).orElse(null);
@@ -37,6 +38,7 @@ public class PedidoService {
 
         Pedido pedido = new Pedido();
         pedido.setEvento(evento);
+        pedido.setUsuario(usuario);
         pedido.setNomeComprador(nomeComprador);
         pedido.setEmailComprador(emailComprador);
         pedido.setQuantidade(quantidade);
