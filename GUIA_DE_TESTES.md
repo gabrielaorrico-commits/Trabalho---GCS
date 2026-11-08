@@ -33,6 +33,11 @@ Este documento apresenta cenários de testes manuais para verificar funcionalida
 - Tentar realizar uma compra informando um email inválido.
 - Resultado esperado: o sistema deve rejeitar o endereço inválido.
 
+### Teste 6 - Busca de eventos
+- Buscar um evento existente pelo título e depois pelo local.
+- Buscar um termo que não corresponda a nenhum evento.
+- Resultado esperado: a busca retorna os eventos correspondentes e, quando não houver resultado, exibe a mensagem "Nenhum evento encontrado".
+
 ## 3. Registro dos resultados
 
 Para cada teste executado, registrar:
