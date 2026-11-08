@@ -33,6 +33,12 @@ Este documento apresenta cenários de testes manuais para verificar funcionalida
 - Tentar realizar uma compra informando um email inválido.
 - Resultado esperado: o sistema deve rejeitar o endereço inválido.
 
+### Teste 6 - Eventos encerrados
+- Acessar a tela inicial e verificar que eventos com data anterior à atual não são exibidos.
+- Buscar pelo nome de um evento encerrado.
+- Tentar acessar diretamente a URL de pagamento de um evento encerrado e finalizar a compra.
+- Resultado esperado: o evento não aparece na listagem nem na busca, e a compra é recusada com a mensagem "Este evento já aconteceu e não está mais à venda."
+
 ## 3. Registro dos resultados
 
 Para cada teste executado, registrar:

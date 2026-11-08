@@ -1,6 +1,6 @@
 # TicketHub
 
-Sistema web de compra de ingressos para eventos, desenvolvido com Spring Boot e Thymeleaf.
+O TicketHub é um sistema web para compra e gerenciamento de ingressos de eventos, desenvolvido com Spring Boot e Thymeleaf.
 
 ---
 
@@ -163,7 +163,7 @@ Started TicketHubApplication in X seconds
 
 | Perfil | Usuário | Senha |
 |---|---|---|
-| Administrador | `admin` | `1234` |
+| Administrador | `admin` | Definida em `app.admin.senha` no arquivo `application.properties` |
 | Cliente | `cliente` | `1234` |
 
 > Ao logar com o usuário `admin`, o sistema redireciona automaticamente para o painel administrativo (`/admin/eventos`). Qualquer outro usuário é redirecionado para a tela inicial (`/`).
