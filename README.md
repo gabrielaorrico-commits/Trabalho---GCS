@@ -159,7 +159,7 @@ Started TicketHubApplication in X seconds
 | Campo | Valor |
 |---|---|
 | Usuário | `admin` |
-| Senha | `1234` |
+| Senha | Definida em `app.admin.senha` no arquivo `application.properties` |
 
 > Ao logar com o usuário `admin`, o sistema redireciona automaticamente para o painel administrativo (`/admin/eventos`). Qualquer outro usuário é redirecionado para a tela inicial (`/`).
 
