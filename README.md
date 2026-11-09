@@ -147,8 +147,7 @@ cd usuario
 ./mvnw spring-boot:run
 ```
 
-A aplicação estará pronta quando aparecer:
-Aguarde a mensagem: 
+Aguarde a inicialização da aplicação e a mensagem:
 ```
 Started TicketHubApplication in X seconds
 ```
