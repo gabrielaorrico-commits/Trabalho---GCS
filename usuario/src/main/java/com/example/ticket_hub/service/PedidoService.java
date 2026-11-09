@@ -31,6 +31,9 @@ public class PedidoService {
         if (evento.getData().isBefore(LocalDateTime.now())) {
             throw new RuntimeException("Este evento já aconteceu e não está mais à venda.");
         }
+        if (quantidade < 1) {
+    throw new RuntimeException("A quantidade deve ser no mínimo 1.");
+}
 
         if (evento.getIngressosDisponiveis() < quantidade) {
             throw new RuntimeException("Ingressos insuficientes. Disponíveis: " + evento.getIngressosDisponiveis());

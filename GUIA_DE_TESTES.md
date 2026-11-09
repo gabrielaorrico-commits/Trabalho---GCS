@@ -2,7 +2,7 @@
 
 ## 1. Objetivo
 
-Este documento descreve os procedimentos de testes manuais do TicketHub, com foco na verificação das funcionalidades de compra de ingressos e na identificação de possíveis falhas do sistema.
+Este guia reúne cenários de testes manuais para validar as principais funcionalidades do TicketHub, incluindo a compra e o gerenciamento de ingressos para eventos.
 
 ## 2. Cenários de teste
 
@@ -33,7 +33,11 @@ Este documento descreve os procedimentos de testes manuais do TicketHub, com foc
 - Tentar realizar uma compra informando um email inválido.
 - Resultado esperado: o sistema deve rejeitar o endereço inválido.
 
-### Teste 6 - Eventos encerrados
+### Teste 6 - Busca de eventos
+- Buscar um evento existente pelo título e depois pelo local.
+- Buscar um termo que não corresponda a nenhum evento.
+- Resultado esperado: a busca retorna os eventos correspondentes e, quando não houver resultado, exibe a mensagem "Nenhum evento encontrado".
+### Teste 7 - Eventos encerrados
 - Acessar a tela inicial e verificar que eventos com data anterior à atual não são exibidos.
 - Buscar pelo nome de um evento encerrado.
 - Tentar acessar diretamente a URL de pagamento de um evento encerrado e finalizar a compra.
