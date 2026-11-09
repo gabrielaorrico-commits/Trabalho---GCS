@@ -2,7 +2,7 @@
 
 ## 1. Objetivo
 
-Este documento apresenta cenários de testes manuais para verificar funcionalidades do TicketHub, sistema web de compra de ingressos para eventos.
+Este guia reúne cenários de testes manuais para validar as principais funcionalidades do TicketHub, incluindo a compra e o gerenciamento de ingressos para eventos.
 
 ## 2. Cenários de teste
 
