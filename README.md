@@ -141,13 +141,13 @@ imagem
 
 ```bash
 # 1. Entrar na pasta do projeto
-cd prog-web/usuario
+cd usuario
 
 # 2. Rodar a aplicação
 ./mvnw spring-boot:run
 ```
 
-Aguarde a mensagem:
+Aguarde a mensagem: 
 ```
 Started TicketHubApplication in X seconds
 ```
